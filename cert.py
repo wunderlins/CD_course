@@ -47,6 +47,12 @@ def main(argv=None):
 	
 	# load svg template
 	template = "./cert_cd_1_template.svg"
+	if (is_cgi):
+		form = cgi.FieldStorage()
+		#tpl = form["template"].value
+		# sanitize input
+				
+		
 	try:
 		fp = open(template, "r")
 	except IOError as e:
