@@ -133,6 +133,9 @@ def main(argv=None):
 	print fp.read()
 	fp.close()
 	
+	# remove files
+	os.remove(file_svg)
+	os.remove(file_pdf)
 	
 if __name__ == "__main__":
 	a = None
