@@ -8,7 +8,7 @@
 #   4 $$location$$
 #   5 $$trainer$$
 
-import sys
+import sys, os
 
 def usage():
 	print """
@@ -58,7 +58,12 @@ def main(argv=None):
 		#sys.stdout.write("%s %s\n" % (repl, argv[i]))
 		buffer = buffer.replace(repl, argv[i])
 	
-	print buffer;
+	# write temp svg file
+	pid = os.getpid()
+	
+	# process id for temp file
+	sys.stdout.write("%s\n" % os.getpid())
+	#print buffer;
 	
 	# convert svg to pdf
 	
