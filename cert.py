@@ -35,27 +35,15 @@ inkscape_bin = "/usr/bin/inkscape"
 arg = ["exe", "name", "title", "date", "location", "trainer"]
 
 def main(argv=None):
-	#print "Content-type: text/plain\n\n"
-	#print argv
-	#print 1
-	#sys.exit(0)
 	
 	if argv is None:
 		argv = sys.argv
-	
-	#print "Content-type: text/plain\n\n"
-	#print "Hello %s" % argv[0]
-	#sys.exit(0)
 	
 	if (len(argv) < 6):
 		print("Argument error %d\n") % len(sys.argv)
 		print argv
 		usage()
 		sys.exit(1)
-	
-	# debug
-	#print("name: %s\ntitle: %s\ndate: %s\nlocation: %s\ntrainer: %s\n") % \
-	#	(argv[1], argv[2], argv[3], argv[4], argv[5])
 	
 	# load svg template
 	template = "./cert_cd_1_template.svg"
@@ -107,12 +95,7 @@ def main(argv=None):
 	# /usr/bin/inkscape --export-pdf=FILENAME
 	file_pdf = file_base + ".pdf"
 	call([inkscape_bin, "--export-pdf="+file_pdf, file_svg])
-	
 	statinfo = os.stat(file_pdf)
-	#print "Content-type: text/plain\n\n"
-	#print "aaa"
-	#sys.stdout.write("Content-length: %d\n\n" % statinfo.st_size)
-	#sys.exit(0)
 	
 	# stream pdf result
 	sys.stdout.write("Content-type: application/pdf\n")
@@ -143,17 +126,10 @@ if __name__ == "__main__":
 		form = cgi.FieldStorage() 
 		
 		a = ["cgi", "", "", "", "", ""]
-		#a.append(form.getValue(args[1]))
 		
-		#print "Content-type: text/html\n\n"
-		#print args.index("name")
 		for i in form.keys():
 			#print i
 			ix = arg.index(i)
-			#print ix
-			#print i + " %d" % ix
-			#print form[i].value + " <br/>"
 			a[ix] = form[i].value
-			#print i + " " + form[i].value +"\n"
 			
 	sys.exit(main(a))
