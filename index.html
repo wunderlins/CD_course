@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CD - Certificate Generator</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<style type="text/css">
+		body {font-family: sans, arial, helvetica;}
+		span {display: block; float: left; width: 200px;}
+		legend {font-weight: bold;}
+		input[type="text"] {
+			width: 100%;
+			margin-bottom: 1.25em;
+		}
+	</style>
+</head>
+
+<body>
+	<form method="GET" action="cert.py">
+	<h1>CD Certificate Generator</h1>
+
+	<fieldset><legend>Form Data</legend>
+
+		<div>
+			<span class="l">Participand Name</span>
+			<input type="text" value="" name="name" placeholder="[Title] Firstname Lastname"/>
+		</div>
+
+		<div>
+			<span class="l">Name of the training</span>
+			<input type="text" value="" name="title" placeholder="Description of the achievement."/>
+		</div>
+
+		<div>
+			<span class="l">Date of issue</span>
+			<input type="text" value="" name="date" placeholder="DD Month Year"/>
+		</div>
+
+		<div>
+			<span class="l">Training location</span>
+			<input type="text" value="" name="location" placeholder="City, Country"/>
+		</div>
+
+		<div>
+			<span class="l">Trainer Name</span>
+			<input type="text" value="" name="trainer" placeholder="Name of the trainer."/>
+		</div>
+		<hr/>
+		<button onclick="document.location.reload()">Cancel</button>
+		<input type="submit" value="Generate »"/>
+
+	</fieldset>
+</form>
+
+</body>
+</html>

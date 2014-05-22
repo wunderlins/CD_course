@@ -156,18 +156,4 @@ if __name__ == "__main__":
 			a[ix] = form[i].value
 			#print i + " " + form[i].value +"\n"
 			
-		#print 1
-		#print a[0]
-		#print a[1]
-		#print a[2]
-		#print a[3]
-		#print a[4]
-		#print a[5]
-		#sys.exit(0)
-		#a.append(form.getValue(arg[1]))
-		#a.append(form.getValue(arg[2]))
-		#a.append(form.getValue(arg[3]))
-		#a.append(form.getValue(arg[4]))
-		#a.append(form.getValue(arg[5]))
-		
 	sys.exit(main(a))
