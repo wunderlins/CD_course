@@ -7,7 +7,7 @@
 		body {
 			font-family: sans, arial, helvetica;
 			margin: 3em 6em 3em 6em;
-			max-width: 800px;
+			/* max-width: 800px; */
 		}
 		.l {display: block; float: left; width: 200px;}
 		legend {font-weight: bold;}
@@ -15,16 +15,45 @@
 			width: 100%;
 			margin-bottom: 1.25em;
 		}
-		fieldset {padding: 1.5em;}
-		hr {margin-top: 0.8em; margin-bottom: 0.8em;}
+		fieldset {
+			padding: 1.5em;
+		}
+		hr {
+			margin-top: 0.8em; margin-bottom: 0.8em;
+		}
+		#form {}
+		#template {
+			float: right;
+			min-width: 250px; 
+			max-width: 250px;
+			margin-left: 3em;
+		}
 	</style>
 </head>
 
 <body>
-	<form method="GET" action="cert.py">
+	<form method="post" enctype="multipart/form-data" action="cert.py">
 	<h1>CD Certificate Generator</h1>
 
-	<fieldset><legend>Form Data</legend>
+	<fieldset id="template">
+		<legend>Template</legend>
+	
+		<div>
+			<span class="l">Uploaded</span>
+			<select name="template">
+				<option value="cert_cd_1_template.svg">Standard</option>
+				<option value="cert_cd_1_simon.svg">Simon</option>
+			</select>
+		</div>
+		
+		<!--div>
+			<span class="l">SVG Template</span>
+			<input type="file" name="upload" accept="application/svg;image/svg+xml;application/svg+xml"/>
+		</div-->		
+
+	</fieldset>
+	<fieldset id="form">
+		<legend>Form Data</legend>
 
 		<div>
 			<span class="l">Participand Name</span>
@@ -51,14 +80,6 @@
 			<input type="text" value="" name="trainer" placeholder="Name of the trainer."/>
 		</div>
 
-
-		<div>
-			<span class="l">Template</span>
-			<select name="template">
-				<option value="cert_cd_1_template.svg">Standard</option>
-				<option value="cert_cd_1_simon.svg">Simon</option>
-			</select>
-		</div>
 
 		<hr/>
 		<button onclick="document.location.reload(); return false;">Cancel</button>
