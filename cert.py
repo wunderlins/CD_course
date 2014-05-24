@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # expect parameters as arguments
-# parameters:
+# parameters (or equivalent cgi GET parameter):
 #   1 $$name$$
 #   2 $$title$$
 #   3 $$date$$
@@ -18,7 +18,6 @@ if 'REQUEST_METHOD' in os.environ :
 	import cgi, cgitb 
 	cgitb.enable()
 	# Create instance of FieldStorage 
-	#form = cgi.FieldStorage() 
 	is_cgi = True
 
 def usage():
@@ -54,9 +53,6 @@ def main(argv=None):
 		except:
 			pass
 	
-	#print "Content-type: text/plain\n\n%s" % template
-	#sys.exit(0)
-			
 	try:
 		fp = open(template, "r")
 	except IOError as e:
@@ -73,19 +69,15 @@ def main(argv=None):
 	
 	# subsitute values in svg
 	for (i, keyword) in enumerate(arg):
-		#sys.stdout.write("[%d] %s: %s\n " % (i, keyword, argv[i]))
 		repl = '$$' + keyword + '$$'
-		#sys.stdout.write("%s %s\n" % (repl, argv[i]))
 		buffer = buffer.replace(repl, argv[i])
 	
 	# write temp svg file
 	pid = os.getpid()
 	
-	# TODO: figure out absolute path
 	file_base = "./tmp/out-%d" % (pid)
 	file_svg = file_base + ".svg"
 	
-	#sys.stdout.write("%s\n" % file_svg)
 	try:
 		fp = open(file_svg, "wb+")
 	except IOError as e:
